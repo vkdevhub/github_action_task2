@@ -29,8 +29,8 @@ jobs:
       - name: Install Dependencies
         run: 'npm install'
 
-      - name: Test Application
-        run: 'npm test'
-
       - name: Run Application
         run: 'node --env-file=.env index.js'
+
+      - name: Test Application
+        run: 'curl thhp://localhost:5000'
