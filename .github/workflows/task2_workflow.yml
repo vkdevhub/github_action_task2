@@ -1,0 +1,36 @@
+name: Continuous Integration Task 2
+on:
+  push:
+    branches:
+      - main
+      #- testnode
+  workflow_dispatch:
+
+jobs:
+  run_first_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Show node version
+        run: 'node -v'
+
+      - name: Checkout code  
+        uses: actions/checkout@v4
+      
+      - name: Copy env
+        run: 'cp .env.example .env'
+
+      - name: Install Dependencies
+        run: 'npm install'
+
+      - name: Test Application
+        run: 'npm test'
+
+      - name: Run Application
+        run: 'node --env-file=.env index.js'
