@@ -30,7 +30,7 @@ jobs:
         run: 'npm install'
 
       - name: Run Application
-        run: 'node --env-file=.env index.js'
+        run: 'node --env-file=.env index.js &'
 
       - name: Test Application
-        run: 'curl thhp://localhost:5000'
+        run: 'curl http://localhost:5000'
