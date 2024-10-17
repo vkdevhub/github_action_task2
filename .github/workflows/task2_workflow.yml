@@ -33,4 +33,4 @@ jobs:
         run: 'node --env-file=.env index.js &'
 
       - name: Test Application
-        run: 'curl http://localhost:5000'
+        run: 'curl http://localhost:5000/products'
