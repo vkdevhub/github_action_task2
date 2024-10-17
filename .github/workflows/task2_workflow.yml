@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code  
+        uses: actions/checkout@v4
+
       - name: Set up node
         uses: actions/setup-node@v4
         with:
@@ -20,9 +23,6 @@ jobs:
       - name: Show node version
         run: 'node -v'
 
-      - name: Checkout code  
-        uses: actions/checkout@v4
-      
       - name: Copy env
         run: 'cp .env.example .env'
 
