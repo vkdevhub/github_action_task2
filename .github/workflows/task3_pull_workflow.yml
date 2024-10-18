@@ -1,0 +1,33 @@
+name: Test pull requests Task 3
+on:
+  pull_request:
+    types: 
+      - opened
+      - synchronize
+  workflow_dispatch:
+
+jobs:
+  run_first_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code  
+        uses: actions/checkout@v4
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Copy env
+        run: 'cp .env.example .env'
+
+      - name: Install Dependencies
+        run: 'npm install'
+
+      - name: Run Application
+        run: 'node --env-file=.env index.js &'
+
+      - name: Test Application
+        run: 'curl http://localhost:5000/products'
